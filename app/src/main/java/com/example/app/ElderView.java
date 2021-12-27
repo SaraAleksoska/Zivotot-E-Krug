@@ -1,28 +1,20 @@
 package com.example.app;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class ElderView extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Adapter2 adapter2;
+    AdapterVolonter adapter2;
 
 
     @Override
@@ -40,10 +32,10 @@ public class ElderView extends AppCompatActivity {
                 .build();
 
 
-        adapter2 = new Adapter2(options);
+        adapter2 = new AdapterVolonter(options);
         recyclerView.setAdapter(adapter2);
 
-        adapter2.setOnItemClickListener(new Adapter2.OnItemClickListener() {
+        adapter2.setOnItemClickListener(new AdapterVolonter.OnItemClickListener() {
             @Override
             public void onItemClick(DataSnapshot documentSnapshot, int position) {
                 FirebaseDatabase.getInstance().getReference().child("Activities").child(documentSnapshot.getKey()).removeValue();

@@ -46,85 +46,13 @@ import java.net.URL;
 import java.util.List;
 import java.util.Locale;
 
-public class OrganizerMain extends AppCompatActivity  implements LocationListener  {
-
-    private TextView msg, msg2;
-    private Button loc;
-    LocationManager locationManager;
-
+public class OrganizerMain extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer_main);
 
-        msg = (TextView) findViewById(R.id.message);
-        msg2 = (TextView) findViewById(R.id.message2);
-        loc = (Button) findViewById(R.id.loc);
-
-        if(ContextCompat.checkSelfPermission(OrganizerMain.this,Manifest.permission.ACCESS_FINE_LOCATION)
-        !=PackageManager.PERMISSION_GRANTED)
-        {
-            ActivityCompat.requestPermissions(OrganizerMain.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                    100);
-        }
-
-
-
-        loc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getLocation();
-            }
-        });
-
     }
 
-    @SuppressLint("MissingPermission")
-    private void getLocation() {
-
-        try {
-            locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5,OrganizerMain.this);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-    }
-
-
-    @Override
-    public void onLocationChanged(@NonNull Location location) {
-        msg.setText(location.getLatitude() + " " + location.getLongitude());
-
-
-        try {
-            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-            List<Address> addresses = geocoder.getFromLocation(38.89511, -77.03637,  1);
-            Address address = addresses.get(0);
-            msg2.setText(address.getLocality() + " " + address.getCountryName());
-            }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            Toast.makeText(OrganizerMain.this,e.toString(),Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
-
-    @Override
-    public void onProviderEnabled(@NonNull String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(@NonNull String provider) {
-
-    }
 }

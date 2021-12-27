@@ -18,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APP">
         <activity
+            android:name=".RateElder"
+            android:exported="false" />
+        <activity
+            android:name=".RateVolonter"
+            android:exported="false" />
+        <activity
             android:name=".MapActivity"
             android:exported="false" />
         <!--

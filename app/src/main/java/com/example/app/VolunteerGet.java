@@ -6,23 +6,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentSnapshot;
 
-import java.util.ArrayList;
-
-public class VolunteerGet extends AppCompatActivity implements Adapter3.OnItemClickListener {
+public class VolunteerGet extends AppCompatActivity implements Adapter1.OnItemClickListener {
 
     RecyclerView recyclerView;
-    Adapter3 adapter3;
+    Adapter1 adapter3;
 
     String email,number, name, volID;
 
@@ -62,10 +57,10 @@ public class VolunteerGet extends AppCompatActivity implements Adapter3.OnItemCl
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("Activities").orderByChild("volName").equalTo("/"),Activity.class)
                         .build();
 
-        adapter3 = new Adapter3(options);
+        adapter3 = new Adapter1(options);
         recyclerView.setAdapter(adapter3);
 
-        adapter3.setOnItemClickListener(new Adapter3.OnItemClickListener() {
+        adapter3.setOnItemClickListener(new Adapter1.OnItemClickListener() {
             @Override
             public void onItemClick(DataSnapshot documentSnapshot, int position) {
                 Activity activity = documentSnapshot.getValue(Activity.class);
