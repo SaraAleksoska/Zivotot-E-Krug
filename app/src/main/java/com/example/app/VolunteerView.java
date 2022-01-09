@@ -58,7 +58,7 @@ public class VolunteerView extends AppCompatActivity {
         adapter.stopListening();
     }
     public void rateing (View view){
-        Intent intent=new Intent(getApplicationContext(),RateVolonter.class);
+        Intent intent=new Intent(getApplicationContext(),RateElder.class);
         startActivity(intent);
     }
 }

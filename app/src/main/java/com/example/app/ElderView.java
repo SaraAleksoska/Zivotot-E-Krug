@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,5 +57,9 @@ public class ElderView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter2.stopListening();
+    }
+    public void rateing1 (View view){
+        Intent intent=new Intent(getApplicationContext(),RateVolonter.class);
+        startActivity(intent);
     }
 }
